@@ -10,12 +10,15 @@
     <modules>
         <module>taotao-dao</module>
         <module>taotao-service</module>
-        <module>taotao-controller</module>
+        <module>taotao-web</module>
+        <module>taotao-web</module>
     </modules>
 
     <name>taotao-parent</name>
 
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
         <!-- spring -->
         <org.springframework.version>5.0.8.RELEASE</org.springframework.version>
         <!-- comnons -->
@@ -32,7 +35,7 @@
         <!-- pool -->
         <commons-pool2>2.4.2</commons-pool2>
         <!-- log4j -->
-        <log4j>2.11.0</log4j>
+        <log4j>1.2.17</log4j>
         <org.slf4j>1.7.25</org.slf4j>
         <!-- aspectj -->
         <org.aspectj>1.9.1</org.aspectj>
@@ -42,8 +45,11 @@
         <org.quartz>2.3.0</org.quartz>
         <!-- c3p0 -->
         <jdbc-c3p0>0.9.5.2</jdbc-c3p0>
+        <mchange-commons>0.2.11</mchange-commons>
         <dom4j>1.6.1</dom4j>
         <projectlombok>1.16.20</projectlombok>
+        <http-client>4.5.2</http-client>
+        <jedis>2.9.0</jedis>
     </properties>
 
     <dependencyManagement>
@@ -171,7 +177,7 @@
             <dependency>
                 <groupId>com.mchange</groupId>
                 <artifactId>mchange-commons-java</artifactId>
-                <version>0.2.11</version>
+                <version>${mchange-commons}</version>
             </dependency>
 
             <!-- jdbc连接池 end -->
@@ -181,22 +187,6 @@
                 <groupId>org.slf4j</groupId>
                 <artifactId>jcl-over-slf4j</artifactId>
                 <version>${org.slf4j}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.apache.logging.log4j</groupId>
-                <artifactId>log4j-core</artifactId>
-                <version>${log4j}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.logging.log4j</groupId>
-                <artifactId>log4j-api</artifactId>
-                <version>${log4j}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.logging.log4j</groupId>
-                <artifactId>log4j-web</artifactId>
-                <version>${log4j}</version>
             </dependency>
             <dependency>
                 <groupId>org.slf4j</groupId>
@@ -209,6 +199,14 @@
                 <artifactId>slf4j-api</artifactId>
                 <version>${org.slf4j}</version>
             </dependency>
+
+            <dependency>
+                <groupId>log4j</groupId>
+                <artifactId>log4j</artifactId>
+                <version>${log4j}</version>
+            </dependency>
+
+
             <!-- log4j end -->
 
             <!-- aspectj start -->
@@ -252,6 +250,16 @@
                 <version>${projectlombok}</version>
             </dependency>
 
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient</artifactId>
+                <version>${http-client}</version>
+            </dependency>
+            <dependency>
+                <groupId>redis.clients</groupId>
+                <artifactId>jedis</artifactId>
+                <version>${jedis}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

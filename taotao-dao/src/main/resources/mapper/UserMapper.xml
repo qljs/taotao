@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.taotao.mapper.UserMapper">
+
+    <resultMap id="BASE_RESULT" type="com.taotao.po.UserDO" >
+        <result column="id" property="id" jdbcType="INTEGER"/>
+        <result column="user_name" property="userName" jdbcType="VARCHAR"/>
+        <result column="age" property="age" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <select id="selectUser" parameterType="com.taotao.po.UserDO" resultMap="BASE_RESULT">
+        select id,user_name,age
+        from t_user
+    </select>
+
+    <update id="updateUser">
+        update t_user
+        set age = #{age}
+        where id = #{id}
+    </update>
+
+    <insert id="insertUser" parameterType="com.taotao.po.UserDO">
+        insert into t_user
+        (user_name,age)
+        values
+        (#{userName},#{age})
+    </insert>
+</mapper>
